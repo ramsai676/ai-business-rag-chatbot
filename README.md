@@ -10,7 +10,7 @@ An embeddable customer-support chatbot that answers questions using a business's
 
 This is a retrieval-augmented generation (RAG) chatbot. Retrieval is handled by a BM25 ranking engine written in plain JavaScript, so there is no vector database, no embedding service, and no per-query cost. The retrieved sections are then used to produce a grounded answer.
 
-Answer generation uses the Claude API when configured; without a key it returns the best-matching FAQ section directly. Either way, answers are constrained to the business's content and every answer shows which section it came from.
+Answer generation uses the Gemini API when configured; without a key it returns the best-matching FAQ section directly. Either way, answers are constrained to the business's content and every answer shows which section it came from.
 
 ## Screenshots
 
@@ -35,7 +35,7 @@ npm start
 # open http://localhost:3002
 ```
 
-The demo is pre-loaded with a sample café knowledge base. Try questions like "what are your opening hours?" or "do you have vegan options?". To enable natural-language answers, copy `.env.example` to `.env` and add an `ANTHROPIC_API_KEY`.
+The demo is pre-loaded with a sample café knowledge base. Try questions like "what are your opening hours?" or "do you have vegan options?". To enable natural-language answers, copy `.env.example` to `.env` and add a `GEMINI_API_KEY`.
 
 Run the tests:
 
@@ -77,7 +77,7 @@ question --> BM25 retrieval --> relevance gate --> grounded answer + citation
 - Backend: Node.js and Express, CORS-enabled for cross-site embedding
 - Front end: a zero-dependency embeddable widget plus a demo page
 - Tests: built-in `node:test` for chunking and ranking
-- Optional Anthropic API integration for answer wording, with an extractive fallback
+- Optional Gemini API integration for answer wording, with an extractive fallback
 
 ## License
 

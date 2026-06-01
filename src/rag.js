@@ -1,25 +1,25 @@
 // RAG orchestration: retrieve relevant chunks, then generate a grounded answer.
 //
-// With an ANTHROPIC_API_KEY, Claude writes a natural answer constrained to the
+// With a GEMINI_API_KEY, the model writes a natural answer constrained to the
 // retrieved context (and is told to say "I don't know" rather than hallucinate).
 // Without a key, we fall back to an extractive answer built from the best chunk.
 
-import Anthropic from '@anthropic-ai/sdk';
+import { GoogleGenAI } from '@google/genai';
 
-const MODEL = process.env.ANTHROPIC_MODEL || 'claude-haiku-4-5-20251001';
+const MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 const MIN_SCORE = 0.5; // below this, treat retrieval as "no good match"
 
 let client = null;
 function getClient() {
   if (client) return client;
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) return null;
-  client = new Anthropic({ apiKey });
+  client = new GoogleGenAI({ apiKey });
   return client;
 }
 
 export function llmAvailable() {
-  return Boolean(process.env.ANTHROPIC_API_KEY);
+  return Boolean(process.env.GEMINI_API_KEY);
 }
 
 function buildSystemPrompt(businessName) {
@@ -79,13 +79,12 @@ export async function answer(kb, question, { businessName = 'our business', k = 
   const userPrompt = `CONTEXT:\n"""\n${context}\n"""\n\nCUSTOMER QUESTION: ${question}\n\nAnswer using only the context above.`;
 
   try {
-    const resp = await c.messages.create({
+    const resp = await c.models.generateContent({
       model: MODEL,
-      max_tokens: 500,
-      system: buildSystemPrompt(businessName),
-      messages: [{ role: 'user', content: userPrompt }],
+      contents: userPrompt,
+      config: { systemInstruction: buildSystemPrompt(businessName), maxOutputTokens: 500 },
     });
-    const text = resp.content.filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
+    const text = (resp.text || '').trim();
     return {
       answer: text || extractiveFallback(goodHits, businessName),
       sources,
@@ -105,5 +104,5 @@ export async function answer(kb, question, { businessName = 'our business', k = 
 }
 
 function truncate(s, n) {
-  return s.length > n ? `${s.slice(0, n).trim()}…` : s;
+  return s.length > n ? `${s.slice(0, n).trim()}...` : s;
 }

@@ -66,7 +66,7 @@ app.post('/api/chat', async (req, res) => {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   app.listen(PORT, () => {
     console.log(`\n  💬  Business RAG Chatbot on http://localhost:${PORT}`);
-    console.log(`      LLM answers: ${llmAvailable() ? 'ENABLED (Claude)' : 'fallback/extractive mode'}\n`);
+    console.log(`      LLM answers: ${llmAvailable() ? 'ENABLED (Gemini)' : 'fallback/extractive mode'}\n`);
   });
 }
 

@@ -1,5 +1,5 @@
 /*
- * Brew Haven RAG Chat Widget — embeddable in ANY website with one script tag:
+ * Brew Haven RAG Chat Widget - embeddable in ANY website with one script tag:
  *
  *   <script src="https://your-host/widget.js"
  *           data-api="https://your-host"
@@ -56,7 +56,7 @@
   const panel = document.createElement('div');
   panel.className = 'rhx-panel';
   panel.innerHTML = `
-    <div class="rhx-head"><h4>${NAME}</h4><p>Ask us anything — we usually reply instantly.</p></div>
+    <div class="rhx-head"><h4>${NAME}</h4><p>Ask us anything - we usually reply instantly.</p></div>
     <div class="rhx-body" id="rhx-body"></div>
     <div class="rhx-foot">
       <input id="rhx-input" type="text" placeholder="Type your question…" autocomplete="off" />

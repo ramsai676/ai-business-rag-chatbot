@@ -1,4 +1,4 @@
-# One-click deploy to Render (https://render.com) — free tier.
+# One-click deploy to Render (https://render.com) - free tier.
 # In Render: New + → Blueprint → connect this repo. Render reads this file.
 services:
   - type: web
@@ -9,7 +9,7 @@ services:
     startCommand: npm start
     healthCheckPath: /api/health
     envVars:
-      # Optional — works without it (BM25 + extractive answers). Add in the
-      # dashboard to enable natural, Claude-written answers.
-      - key: ANTHROPIC_API_KEY
+      # Optional - works without it (BM25 + extractive answers). Add in the
+      # dashboard to enable natural, Gemini-written answers.
+      - key: GEMINI_API_KEY
         sync: false

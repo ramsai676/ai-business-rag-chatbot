@@ -88,7 +88,7 @@ export class KnowledgeBase {
     this._tokenCache = [];
     let totalLen = 0;
     for (const chunk of this.chunks) {
-      // Index the title alongside the body — section titles ("Opening Hours")
+      // Index the title alongside the body - section titles ("Opening Hours")
       // are strong relevance signals for FAQ-style retrieval.
       const tokens = [...tokenize(chunk.title), ...tokenize(chunk.text)];
       this._tokenCache.push(tokens);
