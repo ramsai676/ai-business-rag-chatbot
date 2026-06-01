@@ -1,0 +1,45 @@
+{
+  "businessName": "Brew Haven Café",
+  "documents": [
+    {
+      "id": "hours",
+      "title": "Opening Hours",
+      "text": "Brew Haven Café is open Monday to Friday from 7:00 AM to 8:00 PM. On Saturdays we open from 8:00 AM to 9:00 PM, and on Sundays from 8:00 AM to 6:00 PM. We are closed on major public holidays such as Christmas Day and New Year's Day. Our kitchen stops taking hot-food orders 30 minutes before closing."
+    },
+    {
+      "id": "location",
+      "title": "Location & Parking",
+      "text": "We are located at 42 Riverside Lane, Greenfield, near the central library. The nearest bus stop is Riverside Square (lines 12 and 18). Free customer parking is available for up to 2 hours in the lot behind the café; on-street parking is metered. The café is fully wheelchair accessible with a step-free entrance and an accessible restroom."
+    },
+    {
+      "id": "menu",
+      "title": "Menu & Dietary Options",
+      "text": "Our menu features specialty coffee, loose-leaf teas, fresh pastries, sandwiches, and all-day breakfast. We offer oat, almond, and soy milk at no extra charge. Vegan and gluten-free options are clearly marked on the menu, including a gluten-free banana bread and a vegan breakfast bowl. Please inform staff of any allergies; while we take care, our kitchen handles nuts, gluten, and dairy, so we cannot guarantee zero cross-contamination."
+    },
+    {
+      "id": "wifi",
+      "title": "Wi-Fi & Workspace",
+      "text": "Free high-speed Wi-Fi is available for all customers; the network is 'BrewHaven-Guest' and the password is printed on your receipt and on table cards. We welcome remote workers and students. Power outlets are available at most tables. During busy weekend brunch hours (10 AM to 1 PM) we kindly ask laptop users to be mindful of seating for dine-in guests."
+    },
+    {
+      "id": "booking",
+      "title": "Reservations & Group Bookings",
+      "text": "Walk-ins are always welcome. For groups of 6 or more, we recommend booking ahead by calling 01234 567890 or using the reservation form on our website. We can reserve our back room for private events of up to 25 people, with optional catering packages. A small deposit is required for private event bookings, which is deducted from your final bill."
+    },
+    {
+      "id": "loyalty",
+      "title": "Loyalty Programme",
+      "text": "Our loyalty card gives you a free drink after every 9 purchases. Ask any barista for a card, or join our digital loyalty programme through the Brew Haven app. App members also receive a free pastry on their birthday and early access to seasonal menu launches."
+    },
+    {
+      "id": "contact",
+      "title": "Contact & Feedback",
+      "text": "You can reach us by phone at 01234 567890 or by email at hello@brewhaven.example. We aim to reply to emails within one business day. For feedback or complaints, please speak to the duty manager in person or email us; we take all feedback seriously and will respond personally."
+    },
+    {
+      "id": "payment",
+      "title": "Payment Methods",
+      "text": "We accept cash, all major debit and credit cards, and contactless mobile payments including Apple Pay and Google Pay. There is no minimum spend for card payments. We are unable to split a single bill across more than four cards."
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Business RAG Chatbot — Demo</title>
+  <meta name="description" content="An embeddable, retrieval-augmented support chatbot that answers customer questions from a business's own FAQ — grounded, with citations." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#0d1020;--panel:#161b30;--border:#262d47;--text:#e9ecf6;--dim:#9aa3bd;--accent:#6c5ce7;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;
+      background-image:radial-gradient(circle at 20% 0%,rgba(108,92,231,.18),transparent 45%);min-height:100vh;}
+    .wrap{max-width:820px;margin:0 auto;padding:60px 28px 120px;}
+    .tag{display:inline-block;background:rgba(108,92,231,.16);color:#b9aef9;font-size:.8rem;font-weight:600;
+      padding:6px 14px;border-radius:999px;letter-spacing:.03em;}
+    h1{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-.02em;margin:18px 0 14px;
+      background:linear-gradient(120deg,#fff 30%,#b9aef9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+    .lead{color:var(--dim);font-size:1.12rem;max-width:620px;}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:24px;margin-top:28px;}
+    .card h2{font-size:1.15rem;margin-bottom:12px;}
+    .card p{color:var(--dim);margin-bottom:10px;}
+    code,pre{font-family:ui-monospace,monospace;}
+    pre{background:#0a0d1a;border:1px solid var(--border);border-radius:10px;padding:16px;overflow-x:auto;
+      font-size:.85rem;color:#c7d0ee;margin-top:8px;}
+    .pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
+    .pill{background:#0a0d1a;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:.9rem;color:var(--dim);cursor:pointer;transition:border-color .15s,color .15s;}
+    .pill:hover{border-color:var(--accent);color:var(--text);}
+    .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:20px;}
+    .feat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;}
+    .feat b{display:block;margin-bottom:4px;}
+    .feat span{color:var(--dim);font-size:.9rem;}
+    .hint{margin-top:30px;color:var(--dim);font-size:.95rem;}
+    footer{text-align:center;color:#5a6488;font-size:.82rem;padding:30px;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="tag">RAG · Retrieval-Augmented Generation</span>
+    <h1>An AI support agent that actually knows your business</h1>
+    <p class="lead">
+      This chatbot answers customer questions <strong>only</strong> from a business's own FAQ/knowledge base —
+      grounded, cited, and honest when it doesn't know. Click the 💬 bubble in the corner to try the live demo
+      (loaded with <em>Brew Haven Café</em>'s info).
+    </p>
+
+    <div class="feats">
+      <div class="feat"><b>🔎 BM25 retrieval</b><span>Finds the right FAQ chunk — no external embedding API needed.</span></div>
+      <div class="feat"><b>🤖 Grounded answers</b><span>Claude answers from context and refuses to invent facts.</span></div>
+      <div class="feat"><b>📎 Citations</b><span>Every answer shows which FAQ section it came from.</span></div>
+      <div class="feat"><b>🧩 One-line embed</b><span>Drop a single script tag into any website.</span></div>
+    </div>
+
+    <div class="card">
+      <h2>Try asking…</h2>
+      <p>Click a question (it opens the chat and asks for you), or type your own.</p>
+      <div class="pill-row" id="pills"></div>
+    </div>
+
+    <div class="card">
+      <h2>Embed it on any site</h2>
+      <p>Host this app, then add one script tag to your website:</p>
+      <pre>&lt;script src="https://your-host/widget.js"
+        data-api="https://your-host"
+        data-name="Brew Haven Café"
+        data-accent="#6c5ce7"&gt;&lt;/script&gt;</pre>
+      <p class="hint">Swap in your own FAQ via <code>POST /api/ingest</code> or by editing <code>data/knowledge-base.json</code>.</p>
+    </div>
+  </div>
+
+  <footer>Built with Node, Express, BM25 retrieval &amp; Claude · Grounded, citation-backed answers</footer>
+
+  <!-- The embeddable widget, pointed at this same server -->
+  <script src="/widget.js" data-api="" data-name="Brew Haven Café" data-accent="#6c5ce7"></script>
+  <script>
+    const SAMPLES = ['What are your opening hours?','Do you have vegan options?','Is there free parking?',
+      'What is the Wi-Fi password?','Can I book for a group of 10?','Do you accept Apple Pay?'];
+    const pills = document.getElementById('pills');
+    SAMPLES.forEach((q) => {
+      const b = document.createElement('button');
+      b.className = 'pill'; b.textContent = q;
+      b.onclick = () => {
+        const launcher = document.querySelector('.rhx-launcher');
+        const panel = document.querySelector('.rhx-panel');
+        if (panel && !panel.classList.contains('rhx-open')) launcher.click();
+        const input = document.getElementById('rhx-input');
+        const send = document.getElementById('rhx-send');
+        if (input && send) { input.value = q; send.click(); }
+      };
+      pills.appendChild(b);
+    });
+  </script>
+</body>
+</html>
