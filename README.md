@@ -27,7 +27,11 @@ A RAG chatbot is one of the most **in-demand and sellable** AI builds for small 
 
 - *"What are your opening hours?"* · *"Do you have vegan options?"* · *"What's the Wi-Fi password?"* · *"Can I book for a group of 10?"*
 
-> _Add your screenshot/GIF here (e.g. `docs/demo.gif`) and your deployed URL._
+### Screenshots
+
+| Landing page | Answering from the FAQ (with citations) |
+| :---: | :---: |
+| ![Home screen](docs/01-home.png) | ![Chat widget answering a question](docs/02-result.png) |
 
 ---
 
