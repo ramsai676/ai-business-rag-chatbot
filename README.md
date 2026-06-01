@@ -1,4 +1,4 @@
-# 💬 Business RAG Chatbot — embeddable AI support agent
+# 💬 Business RAG Chatbot - embeddable AI support agent
 
 > Feed it a business's FAQs and it answers customer questions **grounded in that content**, with **citations**, and honestly says *"I don't know"* instead of making things up. Drop it onto any website with **one script tag**.
 
@@ -14,16 +14,16 @@ A production-style **Retrieval-Augmented Generation (RAG)** chatbot: **BM25 retr
 
 A RAG chatbot is one of the most **in-demand and sellable** AI builds for small businesses. This one stands out because it is:
 
-- **Grounded & honest** — answers come *only* from the business's own content; the model is instructed (and the pipeline enforces a relevance threshold) to refuse to invent hours, prices, or policies.
-- **Cited** — every answer shows which FAQ section it used, so customers (and you) can trust it.
-- **Dependency-light & offline-capable** — retrieval is **BM25 in pure JavaScript**: no vector database, no embedding API, no cost. Claude is optional and **falls back to extractive answers** without a key.
-- **Truly embeddable** — a self-contained `widget.js` injects a floating chat bubble into any site without clashing with the host page's styles.
+- **Grounded & honest** - answers come *only* from the business's own content; the model is instructed (and the pipeline enforces a relevance threshold) to refuse to invent hours, prices, or policies.
+- **Cited** - every answer shows which FAQ section it used, so customers (and you) can trust it.
+- **Dependency-light & offline-capable** - retrieval is **BM25 in pure JavaScript**: no vector database, no embedding API, no cost. Claude is optional and **falls back to extractive answers** without a key.
+- **Truly embeddable** - a self-contained `widget.js` injects a floating chat bubble into any site without clashing with the host page's styles.
 
 ---
 
 ## 🖥️ Live demo
 
-`npm start`, open <http://localhost:3002>, and click the 💬 bubble. It's pre-loaded with **Brew Haven Café**'s FAQ — try:
+`npm start`, open <http://localhost:3002>, and click the 💬 bubble. It's pre-loaded with **Brew Haven Café**'s FAQ - try:
 
 - *"What are your opening hours?"* · *"Do you have vegan options?"* · *"What's the Wi-Fi password?"* · *"Can I book for a group of 10?"*
 
@@ -81,7 +81,7 @@ Host the app, then add **one tag** to your site:
         data-accent="#6c5ce7"></script>
 ```
 
-The widget self-injects its own scoped styles and a floating launcher — no build step, no framework, no CSS conflicts.
+The widget self-injects its own scoped styles and a floating launcher - no build step, no framework, no CSS conflicts.
 
 ---
 
@@ -91,7 +91,7 @@ The widget self-injects its own scoped styles and a floating launcher — no bui
 | --- | --- | --- |
 | `POST /api/chat` | `{ "question": "..." }` | Ask the bot. Returns `{ answer, sources[], grounded, source }`. |
 | `POST /api/ingest` | `{ businessName, documents: [{id,title,text}] }` | Replace the knowledge base at runtime. |
-| `GET /api/health` | — | `{ status, llm, businessName, chunks }`. |
+| `GET /api/health` | - | `{ status, llm, businessName, chunks }`. |
 
 ### Use your own knowledge base
 Either edit [`data/knowledge-base.json`](data/knowledge-base.json) and restart, or `POST /api/ingest` with your documents. Each document is `{ id, title, text }`; the engine chunks long text automatically.
@@ -104,8 +104,8 @@ Either edit [`data/knowledge-base.json`](data/knowledge-base.json) and restart, 
 - **Generation:** Anthropic Claude (optional) with grounded-answer system prompt + extractive fallback
 - **Backend:** Node.js + Express, CORS-enabled for cross-site embedding
 - **Frontend:** zero-dependency embeddable widget + demo landing page
-- **Tests:** `node:test` — chunking & retrieval ranking
+- **Tests:** `node:test` - chunking & retrieval ranking
 
 ## 📜 License
 
-MIT — see [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).
