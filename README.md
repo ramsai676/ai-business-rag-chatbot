@@ -1,10 +1,18 @@
-# Support Chatbot (RAG)
+<!-- header:start -->
+<p align="center">
+  <img src=".github/banner.png" alt="RAG Chatbot: An embeddable support bot that answers from your own FAQ, with citations. One script tag." width="100%">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/-JavaScript-1f2937?style=flat-square&logo=javascript&logoColor=white" alt="JavaScript">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-3b82f6?style=flat-square" alt="MIT license"></a>
+  <img src="https://img.shields.io/badge/tests-included-22c55e?style=flat-square" alt="Tests included">
+</p>
+
+<!-- header:end -->
 
 An embeddable customer-support chatbot that answers questions using a business's own FAQ content. It retrieves the most relevant sections, answers from them with a citation, and says it doesn't know rather than inventing facts. It drops into any website with a single script tag.
 
-![node](https://img.shields.io/badge/node-%3E%3D18-informational)
-![license](https://img.shields.io/badge/license-MIT-blue)
-![tests](https://img.shields.io/badge/tests-10%20passing-success)
 
 ## Overview
 
